@@ -1,0 +1,39 @@
+/* 
+    Document   : css
+    Created on : Sep 7, 2013, 11:44:26 AM
+    Author     : chris
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+#length, #width{
+    margin:20px;
+}
+
+#container{
+    width:960px;
+    margin:0 auto;
+}
+
+#rectangle, #circle{
+    width: 600px;
+    margin:20px auto;
+}
+
+#message{
+    text-align: center;
+}
+
+#defaultMessage{
+    color:#0000ff;
+}
+
+#output{
+    margin:0 auto;
+    width:960px;
+    text-align: center;
+}

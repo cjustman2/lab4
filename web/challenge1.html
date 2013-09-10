@@ -1,0 +1,75 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <link href="styles/css.css" rel="stylesheet" type="text/css"/>
+        
+        
+        <script type="text/javascript">
+            window.onload = inIt;
+            
+            function inIt(){
+                var rectangleForm = document.getElementById("rectangle");
+                rectangleForm.onsubmit = validateInput;
+            }
+            
+            function validateInput(){
+                msg = "";
+                var length = document.getElementById("length").value;
+                var width = document.getElementById("width").value;
+               
+                    if(length === "" || isNaN(length) || length <= 0){
+                        
+                         msg += "Please Enter a valid length.";
+                    }
+                    
+                     if(width === "" || isNaN(width) || width <= 0 ){
+                       
+                       msg += "Please Enter a valid width.";
+                      
+                    }
+                    
+                    if(msg !== ""){
+                        alert(msg);
+                        return false;
+                    }
+            }
+            
+            
+        </script>
+        
+
+    </head>
+    <body>
+        <div id="container">
+            
+            <form id="rectangle" name="rectangle" action="RectangleController" method="post">
+                <fieldset>
+                    <legend>Calculate Area Of Rectangle</legend>
+                
+                    <input type="text" id="length" name="length" placeholder="Length In Feet" />
+                    
+                    <br>
+                
+                    <input type="text" id="width" name="width" placeholder="Width In Feet" />
+                    
+                    <br>
+                    
+                    <input type="submit" id="rectangle_btn" value="Calculate"/> 
+                    
+                    <p id="output"></p>
+                </fieldset>
+                
+                
+            </form>
+            
+            
+        </div>
+    </body>
+</html>
