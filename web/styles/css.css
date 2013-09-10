@@ -14,26 +14,13 @@ root {
     margin:20px;
 }
 
-#container{
-    width:960px;
-    margin:0 auto;
-}
+
 
 #rectangle, #circle{
     width: 600px;
     margin:20px auto;
 }
 
-#message{
-    text-align: center;
-}
 
-#defaultMessage{
-    color:#0000ff;
-}
 
-#output{
-    margin:0 auto;
-    width:960px;
-    text-align: center;
-}
+
