@@ -49,7 +49,7 @@ and open the template in the editor.
     <body>
         <div id="container">
             
-            <form id="rectangle" name="rectangle" action="RectangleController" method="post">
+            <form id="rectangle" name="rectangle" action="AreaController?output=message.jsp" method="post">
                 <fieldset>
                     <legend>Calculate Area Of Rectangle</legend>
                 
@@ -61,7 +61,7 @@ and open the template in the editor.
                     
                     <br>
                     
-                    <input type="submit" id="rectangle_btn" value="Calculate"/> 
+                    <input type="submit" id="rectangle_btn" name="btn" value="Calculate Rectangle"/> 
                     
                     <p id="output"></p>
                 </fieldset>

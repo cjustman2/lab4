@@ -11,7 +11,7 @@ import java.text.DecimalFormat;
  * @author chris
  */
 public class CalculateCircleArea{
-             private double radius;
+             private double radius = 0;
              private double area = 0;
              
     

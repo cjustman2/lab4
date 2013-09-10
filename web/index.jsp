@@ -13,7 +13,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         
         <link href="styles/css.css" rel="stylesheet" type="text/css"/>
-        
+        <link href="styles/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         
         <script type="text/javascript">
             window.onload = inIt;
@@ -33,7 +33,8 @@
                
                     if(length === "" || isNaN(length) || length <= 0){
                         
-                         msg += "Please Enter a valid length.";
+                         msg += "Please Enter a valid Length";
+  
                     }
                     
                      if(width === "" || isNaN(width) || width <= 0 ){
@@ -62,6 +63,7 @@
                     if(radius === "" || isNaN(radius) || radius <= 0){
                         
                          msg += "Please Enter a valid radius.";
+                         
                     }
                     
                    
@@ -77,11 +79,10 @@
 
     </head>
     <body>
-        <div id="container">
+        <div class="container">
             
-            <form id="rectangle" name="rectangle" action="AreaController" method="post">
-                <fieldset>
-                    <legend>Calculate Area Of Rectangle</legend>
+            <form id="rectangle" name="rectangle" action="AreaController?output=index.jsp" method="post">
+                <h3>Calculate Area Of Rectangle</h3>
                 
                     <input type="text" id="length" name="length" placeholder="Length In Feet" />
                     
@@ -91,49 +92,56 @@
                     
                     <br>
                     
-                    <input type="submit" id="rectangle_btn" name="btn" value="Calculate Rectangle"/> 
+                    <input type="submit"  class="btn" id="rectangle_btn" name="btn" value="Calculate Rectangle"/> 
                     
                     
-                </fieldset>
+                
                 
                 
             </form>
+            <hr>
             
             <h2>
                <%
                
                 if(request.getAttribute("strArea") != null){ 
-                    
+                    out.println("<div class='alert'>");
                      String dMsg = "";
                 
                      Object obj = request.getAttribute("strArea");
                
                             if(obj != null){
+                                
+                                if(obj.toString().equalsIgnoreCase("Enter correct information")){
+                                dMsg = obj.toString();
+                                }else{
                                 dMsg = obj.toString() + " sf";
+                                }
+                                
                             }else{
-                                dMsg = "error.";
+                                dMsg = "Error.";
 
                             }
             
-                      out.println(dMsg);
-                      out.println("<h3><a href='index.jsp'>Clear</a></h3>");
+                      
+                      out.println(dMsg + "<h3><a href='index.jsp' class='btn'>Clear</a></h3></div><hr>");
                 } 
             %>
            
             </h2>
-             <form id="circle" name="circle" action="AreaController" method="post">
-                <fieldset>
-                    <legend>Calculate Area Of A Circle</legend>
+             <form id="circle" name="circle" action="AreaController?output=index.jsp" method="post">
+                
+                    <h3>Calculate Area Of A Circle</h3>
                 
                 
                     <input type="text" id="radius" name="radius" placeholder="Radius In Feet" />
                     
                     <br>
                     
-                    <input type="submit" id="circle_btn" name ="btn" value="Calculate Circle"/> 
+                    <input type="submit"  class="btn" id="circle_btn" name ="btn" value="Calculate Circle"/> 
                     
                     <p id="output"></p>
-                </fieldset>
+                
                 
                 
             </form>

@@ -18,9 +18,9 @@
                <span id="defaultMessage">The calculated area of the rectangle is: </span>
             <%
                 
-                String dMsg = "There was an error.";
+                String dMsg = "Obj is empty.";
                 
-               Object obj = request.getAttribute("area");
+               Object obj = request.getAttribute("strArea");
                
                if(obj != null){
                    dMsg = obj.toString() + " sf";

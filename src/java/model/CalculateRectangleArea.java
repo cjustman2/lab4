@@ -11,13 +11,13 @@ import java.text.DecimalFormat;
  * @author chris
  */
 public class CalculateRectangleArea {
-    
+            private double l, w;
     
 
 
     
     public String getarea(String length, String width) {
-            double l, w;
+            
             
             l = Double.parseDouble(length);
             w = Double.parseDouble(width);

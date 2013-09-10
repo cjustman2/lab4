@@ -6,7 +6,6 @@ package Controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.DecimalFormat;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,7 +22,12 @@ import model.CalculateRectangleArea;
  */
 @WebServlet(name = "AreaController", urlPatterns = {"/AreaController"})
 public class AreaController extends HttpServlet {
-
+    
+      String strArea = null;
+            String l = null;
+            String w = null;
+            String r = null;
+            String output = null;
     /**
      * Processes requests for both HTTP
      * <code>GET</code> and
@@ -37,14 +41,11 @@ public class AreaController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
+        
         try {
             
             
-            String strArea = null;
-            String l = null;
-            String w = null;
-            String r = null;
+          
             
             
             String requestingForm = request.getParameter("btn");
@@ -52,15 +53,24 @@ public class AreaController extends HttpServlet {
               
               switch(requestingForm){
                   case "Calculate Rectangle":
-                      
-                      CalculateRectangleArea ac = new CalculateRectangleArea();
-                      l = request.getParameter("length");
-                      w = request.getParameter("width");
+                      if(request.getParameter("length").equals("") ||  request.getParameter("width").equals("")){
+                          
+                          strArea = "Enter correct information";
+                          break;
+                      }
+                        
+                       CalculateRectangleArea ac = new CalculateRectangleArea();
+                       l = request.getParameter("length");
+                        w = request.getParameter("width");
                       strArea = ac.getarea(l, w);
                       break;
                       
                   case "Calculate Circle":
-                      
+                        if(request.getParameter("radius").equals("")){                  
+                          strArea = "Enter correct information";
+                          break;
+                      }
+                        
                       CalculateCircleArea ca = new CalculateCircleArea();
                       r = request.getParameter("radius");
                       strArea = ca.getarea(r);
@@ -68,11 +78,11 @@ public class AreaController extends HttpServlet {
                       
                   default:
                       strArea = "There was an error.";
-                     request.setAttribute("strArea",strArea); 
+                     
               }
               
               
-              
+              output = request.getParameter("output");
               
               
                
@@ -85,7 +95,7 @@ public class AreaController extends HttpServlet {
        // }
         
              RequestDispatcher view =
-                request.getRequestDispatcher("/index.jsp");
+                request.getRequestDispatcher("/"+output);
         view.forward(request, response);
     }
 
